@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Webpage with JavaScript</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: yellow;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #menu {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #content {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #content > div {
+        display: none;
+    }
+
+</style>
+</head>
+<body>
+
+<h1>Welcome to our Interactive Webpage!</h1>
+
+<form id="form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    
+    <button type="submit" onclick="validateForm()">Submit</button>
+</form>
+
+<div id="menu">
+    <button onclick="showContent('content1')">Content 1</button>
+    <button onclick="showContent('content2')">Content 2</button>
+</div>
+
+<div id="content">
+    <div id="content1">
+        <h2>Content 1</h2>
+        <p>This is the first dynamic content.</p>
+    </div>
+    <div id="content2">
+        <h2>Content 2</h2>
+        <p>This is the second dynamic content.</p>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        
+        if (name === '' || email === '') {
+            alert('Please fill in all fields.');
+        } else {
+            alert('Form submitted successfully!');
+        }
+    }
+    
+    function showContent(contentId) {
+        const contents = document.querySelectorAll('#content > div');
+        
+        contents.forEach(content => {
+            if (content.id === contentId) {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
